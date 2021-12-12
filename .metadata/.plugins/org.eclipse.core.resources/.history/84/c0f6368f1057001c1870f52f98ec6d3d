@@ -1,0 +1,71 @@
+package stp.arrays.duyetmang_hethongphantichremcua;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+
+	static int M, N;
+	static char[][] arr;
+	
+	static int[] types;
+	static String strResult;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("stp\\arrays\\duyetmang_hethongphantichremcua")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				types = new int[5];
+				strResult = "";
+				
+				M = s.nextInt();
+				N = s.nextInt();
+				int row = 5 * M + 1;
+				int col = 5 * N + 1;
+				arr = new char[row][col];
+				
+				// input
+				for (int i = 0; i < row; i++) {
+					String str = s.next();
+					for (int j = 0; j < col; j++) {
+						arr[i][j] = str.charAt(j);
+					}
+				}
+
+				// solve
+				for (int i = 1; i < row; i += 5) {
+					for (int j = 1; j < col; j += 5) {
+						check(i, j);
+					}
+				}
+
+				for (int i = 0; i < types.length; i++) {
+					strResult += types[i] + " ";
+				}
+				
+				System.out.println("#" + tc + " " + strResult);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void check(int x, int y) {
+		int index = 0;
+		
+		for (int i = x; i < x + 5; i++) {
+			if (arr[i][y] == '*') {
+				index++;
+			}
+		}
+		
+		types[index]++;
+	}
+}

@@ -1,0 +1,67 @@
+package stp.arrays.duyetmang_vungbaolonnhat;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+
+	static int H, W, M, N;
+	static int[][] arr;
+	static int sumResult;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("stp\\arrays\\duyetmang_vungbaolonnhat")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				sumResult = 0;
+				H = s.nextInt();
+				W = s.nextInt();
+				M = s.nextInt();
+				N = s.nextInt();
+
+				arr = new int[M][N];
+
+				// input
+				for (int i = 0; i < M; i++) {
+					for (int j = 0; j < N; j++) {
+						arr[i][j] = s.nextInt();
+					}
+				}
+
+				// solve
+				for (int i = 0; i < M - H; i++) {
+					for (int j = 0; j < N - W; j++) {
+						if (sumResult < sum(i, j)) {
+							sumResult = sum(i, j);
+						}
+					}
+				}
+
+				System.out.println("#" + tc + " " + sumResult);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static int sum(int x, int y) {
+		int sum = 0;
+
+		for (int i = 0; i < x + H; i++) {
+			for (int j = 0; j < y + W; j++) {
+				if (arr[i][j] % 2 == 0) {
+					sum += arr[i][j];
+				}
+			}
+		}
+
+		return sum;
+	}
+}

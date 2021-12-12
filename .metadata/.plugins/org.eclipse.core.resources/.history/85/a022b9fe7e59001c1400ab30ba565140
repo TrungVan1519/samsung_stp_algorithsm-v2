@@ -1,0 +1,122 @@
+package stp.arrays.duyetmang_truyvanmatran;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+
+	static int row, col;
+	static int[][] arr;
+
+	static int K;
+	static int[][] change;
+
+	static int resCount4, resCount8;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("stp\\arrays\\duyetmang_truyvanmatran")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				row = s.nextInt();
+				col = s.nextInt();
+				K = s.nextInt();
+
+				arr = new int[row][col];
+				change = new int[K][2];
+
+				resCount4 = 0;
+				resCount8 = 0;
+
+				// input
+				for (int i = 0; i < row; i++) {
+					for (int j = 0; j < col; j++) {
+						arr[i][j] = s.nextInt();
+					}
+				}
+
+				for (int i = 0; i < K; i++) {
+					change[i][0] = s.nextInt();
+					change[i][1] = s.nextInt();
+				}
+
+				// solve
+				for (int i = 0; i < K; i++) {
+					// DOWN
+					if (change[i][0] == 3) {
+						int[] tmpArr = new int[col];
+
+						for (int j = 0; j < change[i][1]; j++) {
+							// copy last row
+							for (int k = 0; k < col; k++) {
+								tmpArr[k] = arr[row - 1][k];
+							}
+
+							// change
+							for (int k = row - 1; k >= 0; k--) {
+								for (int k2 = 0; k2 < col; k2++) {
+									if (k == 0) {
+										arr[0][k2] = tmpArr[k2];
+									} else {
+										arr[k][k2] = arr[k - 1][k2];
+									}
+								}
+							}
+
+							getSum4or8();
+						}
+					}
+
+					// UP
+					if (change[i][0] == 1) {
+						int[] tmpArr = new int[col];
+
+						for (int j = 0; j < change[i][1]; j++) {
+							// copy first row
+							for (int k = 0; k < col; k++) {
+								tmpArr[k] = arr[0][k];
+							}
+
+							// change
+							for (int k = 0; k < row; k++) {
+								for (int k2 = 0; k2 < col; k2++) {
+									if (k == row - 1) {
+										arr[row - 1][k2] = tmpArr[k2];
+									} else {
+										arr[k][k2] = arr[k + 1][k2];
+									}
+								}
+							}
+
+							System.out.println(resCount4+"\t"+resCount8);
+							getSum4or8();
+
+							MyUtils.showMatrix(arr, row, col);
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private static void getSum4or8() {
+		for (int k = 0; k < row - 1; k++) {
+			for (int k2 = 0; k2 < col - 1; k2++) {
+				if (arr[k][k2] + arr[k + 1][k2 + 1] + arr[k + 1][k2] + arr[k][k2 + 1] == 4) {
+					resCount4++;
+				} else if (arr[k][k2] + arr[k + 1][k2 + 1] + arr[k + 1][k2] + arr[k][k2 + 1] == 8) {
+					resCount8++;
+				}
+			}
+		}
+	}
+}

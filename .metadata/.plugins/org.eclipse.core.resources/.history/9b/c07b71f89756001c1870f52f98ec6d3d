@@ -1,0 +1,30 @@
+package utils;
+
+public class MyUtils {
+
+	public static String getAbsolutePath(String packageName) {
+		return "C:\\Users\\Admin\\Desktop\\STP\\Project\\src\\stp\\" + packageName + "\\input.txt";
+	}
+
+	public static void showMatrix(int[][] arr, int row, int col) {
+		String tmp = "";
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				tmp += arr[i][j] + "\t";
+			}
+			tmp += "\n";
+		}
+		System.out.println(tmp);
+	}
+
+	public static void showMatrix(char[][] arr, int row, int col) {
+		String tmp = "";
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				tmp += arr[i][j] + "\t";
+			}
+			tmp += "\n";
+		}
+		System.out.println(tmp);
+	}
+}

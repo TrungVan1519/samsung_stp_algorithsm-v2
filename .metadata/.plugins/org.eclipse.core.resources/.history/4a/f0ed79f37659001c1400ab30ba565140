@@ -1,0 +1,80 @@
+package stp.arrays.duyetmang_truyvanmatran;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+
+	static int row, col;
+	static int[][] arr;
+
+	static int K;
+	static int[][] change;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("stp\\arrays\\duyetmang_truyvanmatran")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				row = s.nextInt();
+				col = s.nextInt();
+				K = s.nextInt();
+
+				arr = new int[row][col];
+				change = new int[K][2];
+				
+				// input
+				for (int i = 0; i < row; i++) {
+					for (int j = 0; j < col; j++) {
+						arr[i][j] = s.nextInt();
+					}
+				}
+
+				for (int i = 0; i < K; i++) {
+					change[i][0] = s.nextInt();
+					change[i][1] = s.nextInt();
+				}
+				
+				// solve
+				for (int i = 0; i < K; i++) {
+					if (change[i][0] == 1) {
+						int[] tmpArr = new int[col];
+
+						for (int j = 0; j < change[i][1]; j++) {
+							// copy row
+							for (int k = 0; k < col; k++) {
+								tmpArr[k] = arr[row - 1][k];
+							}
+
+							// change
+							for (int k = row - 1; k >= 0; k--) {
+								for (int k2 = 0; k2 < col; k2++) {
+									if (k==0) {
+										arr[0][k2]=tmpArr[k2];
+									} else {
+										arr[k][k2] = arr[k - 1][k2];
+									}
+								}
+							}
+							
+							MyUtils.showMatrix(arr, row, col);
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private static void copyArr(int i) {
+	}
+}

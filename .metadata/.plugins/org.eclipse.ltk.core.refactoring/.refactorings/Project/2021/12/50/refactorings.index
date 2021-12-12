@@ -1,0 +1,140 @@
+1638787514012	Rename package 'stp.arrays.type1_tuanlecongdan'
+1638787683459	Rename local variable 'h'
+1638787687851	Rename local variable 'w'
+1638787694904	Rename local variable 'h'
+1638787700452	Rename local variable 'w'
+1638789335279	Rename local variable 'tx'
+1638789340325	Rename local variable 'ty'
+1638789732911	Rename local variable 'i'
+1638789737427	Rename local variable 'j'
+1638789746473	Rename local variable 'ti'
+1638789753018	Rename local variable 'tj'
+1638789758035	Rename local variable 'k'
+1638789762080	Rename local variable 'ki'
+1638790171772	Copy file
+1638796944823	Rename package 'stp.utils'
+1638796974001	Move compilation unit
+1638796981232	Delete element
+1638797418034	Copy file
+1638797657601	Copy file
+1638802443440	Rename local variable 'tmp'
+1638802557529	Copy file
+1638803538932	Rename local variable 'substring'
+1638805971978	Rename local variable 'i'
+1638808591440	Copy file
+1638809812459	Rename local variable 'j'
+1638809881819	Copy file
+1638810567226	Rename local variable 'j'
+1638812906114	Rename package 'stp.arrays.binhthuong_testiq'
+1638813050498	Rename field 'count'
+1638813347378	Rename local variable 'i'
+1638813351929	Rename local variable 'j'
+1638813366944	Rename local variable 'k'
+1638847821401	Rename local variable 'i'
+1638847826917	Rename local variable 'j'
+1638847832915	Rename local variable 'j2'
+1638848372540	Rename local variable 'k'
+1638848516793	Rename field 'sumResult'
+1638848554946	Copy file
+1638848679120	Delete element
+1638848689913	Copy file
+1638848842499	Rename field 'sumResult'
+1638848898430	Rename field 'sumResult'
+1638848917599	Rename field 'strResult'
+1638848945170	Rename field 'sumCount'
+1638848956493	Rename field 'sumResult'
+1638848973415	Rename field 'xResult'
+1638848979823	Rename field 'yResult'
+1638849011813	Rename field 'result'
+1638849049710	Rename field 'lenResult'
+1638849056994	Rename field 'strResult'
+1638849073430	Rename field 'lenResult'
+1638849082429	Rename field 'countResult'
+1638849090878	Rename field 'strResult'
+1638849740356	Copy file
+1638850448706	Rename local variable 'i'
+1638850453204	Rename local variable 'j'
+1638850745170	Copy file
+1638851707894	Rename local variable 'limKs'
+1638851713423	Rename local variable 'limMs'
+1638851717949	Rename local variable 'limDs'
+1638852987995	Rename local variable 'i'
+1638852993557	Rename local variable 'j'
+1638853010593	Rename local variable 'j2'
+1638858833626	Rename local variable 'dirPacman2'
+1638858839983	Rename local variable 'dirPacman2'
+1638858844508	Rename local variable 'newDir'
+1638863353659	Rename local variable 'j'
+1638864551858	Rename package 'stp.arrays.matranduongdi_robot1'
+1638865218197	Copy file
+1638866792949	Rename package 'stp.arrays.matranduongdi_robot2'
+1638867091302	Rename field 'robot'
+1638869321616	Copy file
+1638872738925	Rename field 'M'
+1638872743754	Rename field 'N'
+1638886378144	Rename field 'tx'
+1638886382101	Rename field 'ty'
+1638886844868	Copy file
+1638888492953	Rename package 'stp.arrays.bbtan2'
+1638889286916	Rename package 'stp.arrays.matranduongdi_trochoipacman'
+1638889740236	Rename local variable 'i'
+1638891446242	Rename local variable 'k'
+1638891465797	Rename local variable 'k'
+1638896984736	Rename local variable 'ballDir'
+1638898165684	Rename local variable 'i'
+1638898183015	Rename field 'size'
+1638941948269	Rename field 'H'
+1638941955127	Rename field 'W'
+1638956685113	Copy file
+1638967310886	Rename field 'resCount'
+1638968064606	Rename local variable 'j'
+1638968139241	Rename local variable 'j'
+1638968143256	Rename local variable 'i'
+1638968169820	Rename local variable 'k'
+1638971341460	Rename local variable 'i'
+1638971345982	Rename local variable 'j'
+1638971348988	Rename local variable 'j2'
+1638971396659	Copy file
+1638972502399	Rename field 'arrChange'
+1638982374503	Rename local variable 'i'
+1638984972688	Rename method 'check'
+1639007079819	Rename local variable 'i'
+1639007150695	Rename method 'check'
+1639007191239	Rename method 'check'
+1639110750863	Rename local variable 'i'
+1639110772411	Rename local variable 'j'
+1639110778446	Rename local variable 'j2'
+1639111208133	Copy file
+1639117601691	Rename field 'resCount4'
+1639129594724	Rename method 'check'
+1639154271639	Rename local variable 'i'
+1639154276698	Rename local variable 'j'
+1639154281196	Rename local variable 'j2'
+1639154550232	Copy file
+1639162109436	Rename local variable 'i'
+1639163924436	Rename method 'countRoom'
+1639164058532	Copy file
+1639170963801	Rename local variable 'i'
+1639170968309	Rename local variable 'j'
+1639170973305	Rename local variable 'j2'
+1639171398082	Copy file
+1639172284612	Rename field 'count'
+1639172444620	Copy file
+1639173527394	Copy file
+1639173866781	Copy file
+1639174473644	Rename local variable 'i'
+1639174942037	Copy file
+1639175566612	Rename local variable 'i'
+1639175577627	Rename local variable 'j'
+1639175582646	Rename local variable 'j'
+1639175590169	Rename local variable 'j2'
+1639175593678	Rename local variable 'j2'
+1639175742513	Copy file
+1639176308760	Copy file
+1639176813527	Copy file
+1639177070500	Rename local variable 'i'
+1639177074379	Rename local variable 'j'
+1639177078300	Rename local variable 'j2'
+1639177196553	Copy file
+1639177826435	Copy file
+1639178169337	Delete element

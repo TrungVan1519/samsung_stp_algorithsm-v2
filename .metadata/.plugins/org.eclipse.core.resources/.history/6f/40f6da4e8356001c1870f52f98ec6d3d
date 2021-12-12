@@ -1,0 +1,10 @@
+package stp.arrays.matran8huong_tuanlecongdan;
+
+public class Solution {
+	
+	static int T;
+
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,41 @@
+package stp.arrays.binhthuong_testiq;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import stp.utils.MyUtils;
+
+public class Solution {
+
+	static char[][] arr;
+	static boolean check;
+	
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("arrays\\binhthuong_testiq")));
+			Scanner s = new Scanner(System.in);
+			
+			arr = new char[4][4];
+			check = false;
+			
+			// cách giải: 
+			// nếu tồn tại hình vuông 2x2 chứa 2 ký tự '#' và 2 ký tự '.' thì in 'NO'
+			// còn lại thì in 'YES'
+			
+			// input
+			for (int i = 0; i < 4; i++) {
+				String str = s.next();
+				for (int j = 0; j < 4; j++) {
+					arr[i][j] = str.charAt(j);
+				}
+			}
+
+			// solve
+			for (int i = 0; i < 4 - 1; i++) {
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

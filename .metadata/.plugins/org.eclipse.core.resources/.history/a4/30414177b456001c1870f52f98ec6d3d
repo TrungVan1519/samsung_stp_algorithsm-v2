@@ -1,0 +1,44 @@
+package stp.arrays.duyetmang_hethongphantichremcua;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+
+	static int M, N;
+	static char[][] arr;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("stp\\arrays\\duyetmang_hethongphantichremcua")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				M = s.nextInt();
+				N = s.nextInt();
+				int row = 5 * M + 1;
+				int col = 5 * N + 1;
+				arr = new char[row][col];
+
+				// input
+				for (int i = 0; i < row; i++) {
+					String str = s.next();
+					for (int j = 0; j < col; j++) {
+						arr[i][j] = str.charAt(j);
+					}
+				}
+				
+				MyUtils.showMatrix(arr, row, col);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

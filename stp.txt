@@ -1,0 +1,18 @@
+- Java can have multiple main() methods
+- size of data types in Java
+- "unsigned" keyword means >= 0 (2^32 - 1)
+- differences between float and double are
+	- float has 7 after point, eg 0.0000001
+	- double has 15 after point, eg 0.0000000000000001
+- C does not have boolean data type
+- another way to check odd or even numbers is using "and" operator, eg if(number&1) { number is even or odd }
+- bitwise operators
+
+
+- khoi tao mang int, float ... N phan tu thi co the dung toi da N phan tu
+- khoi tao mang char N phan tu thi chi co the dung toi da N-1 phan tu, phan tu cuoi luon bi gan = Null de ket thuc mang
+
+
+dinhkhanh157@gmail.com
+ngoctuan.ktmm@gmail.com
+

@@ -1,0 +1,130 @@
+package stp.arrays.matrantoadooxy_va_duongdi_robot2;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import jdk.tools.jlink.internal.DirArchive;
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+
+	static int desX, desY;
+
+	static int length;
+	static char[] robotA, robotB;
+
+	static int txRobotA, tyRobotA, dirRobotA;
+	static int txRobotB, tyRobotB, dirRobotB;
+
+	static int[] dx = { 0, -1, 0, 1 };
+	static int[] dy = { -1, 0, 1, 0 };
+
+	static enum Dir {
+		LEFT, UP, RIGHT, DOWN
+	};
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("stp\\arrays\\matrantoadooxy_va_duongdi_robot2")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				desX = s.nextInt();
+				desY = s.nextInt();
+				length = s.nextInt();
+				robotA = new char[length];
+				robotB = new char[length];
+
+				// input
+				String strRobotA = s.next();
+				for (int i = 0; i < length; i++) {
+					robotA[i] = strRobotA.charAt(i);
+				}
+
+				String strRobotB = s.next();
+				for (int i = 0; i < length; i++) {
+					robotB[i] = strRobotB.charAt(i);
+				}
+
+				// solve
+				txRobotA = 0;
+				tyRobotA = 0;
+				dirRobotA = Dir.UP.ordinal();
+				for (int i = 0; i < length; i++) {
+					if (dirRobotA == 'L') {
+						dirRobotA = turnLeft(dirRobotA);
+						txRobotA += dx[dirRobotA];
+						tyRobotA += dx[dirRobotA];
+					} else if (dirRobotA == 'R') {
+						dirRobotA = turnRight(dirRobotA);
+						txRobotA += dx[dirRobotA];
+						tyRobotA += dx[dirRobotA];
+					} else if (dirRobotA == 'B') {
+						dirRobotA = turnBack(dirRobotA);
+						txRobotA += dx[dirRobotA];
+						tyRobotA += dx[dirRobotA];
+					} else if (dirRobotA == 'W') {
+						dirRobotA = Dir.LEFT.ordinal();
+						txRobotA--;
+					} else if (dirRobotA == 'N') {
+						dirRobotA = Dir.UP.ordinal();
+						tyRobotA++;
+					} else if (dirRobotA == 'E') {
+						dirRobotA = Dir.RIGHT.ordinal();
+						txRobotA++;
+					} else if (dirRobotA == 'S') {
+						dirRobotA = Dir.DOWN.ordinal();
+						tyRobotA--;
+					}
+					
+					txRobotB = 0;
+					tyRobotB = 0;
+					dirRobotB = Dir.UP.ordinal();
+					if (dirRobotB == 'L') {
+						dirRobotB = turnLeft(dirRobotB);
+						txRobotB += dx[dirRobotB];
+						tyRobotB += dx[dirRobotB];
+					} else if (dirRobotB == 'R') {
+						dirRobotB = turnRight(dirRobotB);
+						txRobotB += dx[dirRobotB];
+						tyRobotB += dx[dirRobotB];
+					} else if (dirRobotB == 'B') {
+						dirRobotB = turnBack(dirRobotB);
+						txRobotB += dx[dirRobotB];
+						tyRobotB += dx[dirRobotB];
+					} else if (dirRobotB == 'W') {
+						dirRobotB = Dir.LEFT.ordinal();
+						txRobotB--;
+					} else if (dirRobotB == 'N') {
+						dirRobotB = Dir.UP.ordinal();
+						tyRobotB++;
+					} else if (dirRobotB == 'E') {
+						dirRobotB = Dir.RIGHT.ordinal();
+						txRobotB++;
+					} else if (dirRobotB == 'S') {
+						dirRobotB = Dir.DOWN.ordinal();
+						tyRobotB--;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static int turnLeft(int oldDir) {
+		return (oldDir + 3) % 4;
+	}
+
+	private static int turnRight(int oldDir) {
+		return (oldDir + 1) % 4;
+	}
+
+	private static int turnBack(int oldDir) {
+		return (oldDir + 2) % 4;
+	}
+}

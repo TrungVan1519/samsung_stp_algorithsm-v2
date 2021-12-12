@@ -1,0 +1,34 @@
+package again.id4sonen1;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Main {
+
+	static int T;
+
+	static long num, resSum;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("again\\id4sonen1")));
+			Scanner s = new Scanner(System.in);
+
+			T=s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				num = s.nextLong();
+				
+				resSum = 0;
+				while (num > 0) {
+					resSum += num % 10;
+					num /= 10;
+				}
+				System.out.println(resSum);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
