@@ -1,0 +1,79 @@
+package stp.strings.thisamsunglan1;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+
+	static char[] p, s;
+
+	static int resLen;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("stp\\strings\\thisamsunglan1")));
+			Scanner sc = new Scanner(System.in);
+
+			T = sc.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				// input
+				String strP = sc.next();
+				p = new char[strP.length()];
+				for (int i = 0; i < p.length; i++) {
+					p[i] = strP.charAt(i);
+				}
+
+				String strS = sc.next();
+				s = new char[strS.length()];
+				for (int i = 0; i < s.length; i++) {
+					s[i] = strS.charAt(i);
+				}
+
+				// solve
+				resLen = -1;
+				for (int i = 0; i < p.length - 1; i++) {
+					if (p[i] == '.') {
+						if (p[i + 1] == '*') {
+							splitArr(i);
+						} else {
+
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void splitArr(int i) {
+		char[] first = new char[i];
+		char[] second = new char[p.length - 1 - i + 2];
+
+		for (int j = 0; j < i; j++) {
+			first[j] = p[j];
+		}
+
+		for (int j = i + 2; j < p.length; j++) {
+			second[j] = p[j];
+		}
+
+		if (first.length != 0) {
+			for (int j = s.length - 1; j >= 0; j--) {
+				if (s[j] == first[first.length - 1]) {
+					if (resLen < j) {
+						resLen = j;
+					}
+				}
+			}
+		}
+
+		MyUtils.showArr(first, 0, i - 1);
+		MyUtils.showArr(second, i + 2, p.length - 1);
+		System.out.println("-----------");
+	}
+}

@@ -1,0 +1,44 @@
+package stp.strings.thisamsunglan1;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+
+	static char[] p, s;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("stp\\strings\\thisamsunglan1")));
+			Scanner sc = new Scanner(System.in);
+
+			T = sc.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				// input
+				String strP = sc.next();
+				p = new char[strP.length()];
+				for (int i = 0; i < p.length; i++) {
+					p[i] = strP.charAt(i);
+				}
+
+				String strS = sc.next();
+				s = new char[strS.length()];
+				for (int i = 0; i < s.length; i++) {
+					s[i] = strS.charAt(i);
+				}
+
+				// solve
+				MyUtils.showArr(p, 0, p.length-1);
+				MyUtils.showArr(s, 0, s.length-1);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -17,16 +17,22 @@
     <updated>2021-12-10T20:00:00Z</updated>
     <content type="html">&lt;p&gt;As you may have seen in the news, a new zero-day exploit has been reported against the popular Log4J2 library which can allow an attacker to remotely execute code. The vulnerability has been reported with &lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228"&gt;CVE-2021-44228&lt;/a&gt; against the &lt;code&gt;log4j-core&lt;/code&gt; jar and has been fixed in &lt;a href="https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.15.0/"&gt;Log4J v2.15.0&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Spring Boot users are only affected by this vulnerability if they have &lt;a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.logging.log4j"&gt;switched the default logging system to Log4J2&lt;/a&gt;. The &lt;code&gt;log4j-to-slf4j&lt;/code&gt; and &lt;code&gt;log4j-api&lt;/code&gt; jars that we include in &lt;code&gt;spring-boot-starter-logging&lt;/code&gt; cannot be exploited on their own. Only applications using &lt;code&gt;log4j-core&lt;/code&gt; and including user input in log messages are vulnerable.&lt;/p&gt;
-&lt;p&gt;Our upcoming v2.5.8 &amp;amp; v2.6.2 releases (due Dec 23, 2021) will pickup Log4J v2.15.0, but since this is such a serious vulnerability you may want to override our dependency management and upgrade your Log4J2 dependency sooner.&lt;/p&gt;
+&lt;p&gt;Our upcoming v2.5.8 &amp;amp; v2.6.2 releases (due Dec 23, 2021) will pickup Log4J v2.15.0, but since this is such a serious vulnerability you may want to override our dependency management and upgrade your Log4J2 dependency sooner.&lt;/p&gt;&lt;h2&gt;&lt;a href="#maven" class="anchor" name="maven"&gt;&lt;/a&gt;Maven&lt;/h2&gt;
 &lt;p&gt;For Maven users, you can follow &lt;a href="https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/#using"&gt;these instructions&lt;/a&gt; and the set the &lt;code&gt;log4j2.version&lt;/code&gt; property.&lt;/p&gt;
 &lt;p&gt;For example:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;properties&amp;gt;&#xD;
     &amp;lt;log4j2.version&amp;gt;2.15.0&amp;lt;/log4j2.version&amp;gt;&#xD;
 &amp;lt;/properties&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To check that the override as been applied run &lt;code&gt;./mvnw dependency:list | grep log4j&lt;/code&gt; and check that the version is 2.15.0.&lt;/p&gt;
-&lt;p&gt;For Gradle users, you can follow &lt;a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#managing-dependencies.dependency-management-plugin.customizing"&gt;these instructions&lt;/a&gt; and update the &lt;code&gt;resolutionStrategy&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;For example:&lt;/p&gt;
+&lt;p&gt;To check that the override as been applied run &lt;code&gt;./mvnw dependency:list | grep log4j&lt;/code&gt; and check that the version is 2.15.0.&lt;/p&gt;&lt;h2&gt;&lt;a href="#gradle" class="anchor" name="gradle"&gt;&lt;/a&gt;Gradle&lt;/h2&gt;
+&lt;p&gt;For Gradle users, you can follow &lt;a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#managing-dependencies.dependency-management-plugin.customizing"&gt;these instructions&lt;/a&gt; and update the version property, import the BOM or use a&lt;code&gt;resolutionStrategy&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For most users, setting the &lt;code&gt;log4j2.version&lt;/code&gt; property will be sufficient:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint gradle"&gt;ext[&amp;#39;log4j2.version&amp;#39;] = &amp;#39;2.15.0&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you&amp;rsquo;re using Gradle&amp;rsquo;s platform support instead of our dependency management plugin then you can add a dependency to the Log4J BOM:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint gradle"&gt;implementation(platform(&amp;quot;org.apache.logging.log4j:log4j-bom:2.15.0&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And if you can’t use either of those methods then you can declare a &lt;code&gt;resolutionStrategy&lt;/code&gt;:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint gradle"&gt;configurations.all {&#xD;
 	resolutionStrategy.eachDependency { DependencyResolveDetails details -&amp;gt;&#xD;
 		if (details.requested.group == &amp;#39;org.apache.logging.log4j&amp;#39;) {&#xD;
@@ -35,8 +41,8 @@
 	}&#xD;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To check the override has been applied you can run &lt;code&gt;./gradlew dependencies | grep log4j&lt;/code&gt; and check that the version is 2.15.0.&lt;/p&gt;
-&lt;p&gt;Another option for those that can’t upgrade is to set the&lt;code&gt;log4j2.formatMsgNoLookups&lt;/code&gt; system property to &lt;code&gt;true&lt;/code&gt;. For example, you can start your app using &lt;code&gt;java -Dlog4j2.formatMsgNoLookups=true -jar myapp.jar&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Whichever method you choose, to check that the override has been applied you can run &lt;code&gt;./gradlew dependencyInsight --dependency log4j-core&lt;/code&gt; and look for version 2.15.0.&lt;/p&gt;&lt;h2&gt;&lt;a href="#other-options" class="anchor" name="other-options"&gt;&lt;/a&gt;Other Options&lt;/h2&gt;
+&lt;p&gt;For users that can’t upgrade, another option is to set the&lt;code&gt;log4j2.formatMsgNoLookups&lt;/code&gt; system property to &lt;code&gt;true&lt;/code&gt;. For example, you can start your app using &lt;code&gt;java -Dlog4j2.formatMsgNoLookups=true -jar myapp.jar&lt;/code&gt;.&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
   <entry>
