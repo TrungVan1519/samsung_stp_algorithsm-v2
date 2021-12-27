@@ -1,0 +1,51 @@
+package stp.strings.chuoidoixung1;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class NewSolution {
+
+	static int T;
+
+	static char[] arr;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(
+					MyUtils.getAbsolutePath("Project/src/stp/strings/chuoidoixung1/input.txt", "mac")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				String str = s.next();
+				arr = new char[str.length()];
+
+				// input
+				for (int i = 0; i < str.length(); i++) {
+					arr[tc] = str.charAt(i);
+				}
+
+				// solve
+				if (isSymmetric()) {
+					System.out.println("#" + tc + " YES");
+				} else {
+					System.out.println("#" + tc + " NO");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static boolean isSymmetric() {
+		for (int i = 0; i < arr.length / 2; i++) {
+			if (arr[i] != arr[arr.length - 1 - i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+}

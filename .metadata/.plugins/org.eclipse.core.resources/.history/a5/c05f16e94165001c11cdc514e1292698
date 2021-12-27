@@ -1,0 +1,131 @@
+package again2._013robot2;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Main {
+
+	static int T;
+
+	static int desI, desJ, length;
+	static int tiA, tjA, tiB, tjB, dirA, dirB;
+	static String robotA, robotB;
+	static boolean isADone, isBDone;
+
+	static int[] dx = { -1, 0, 1, 0 };
+	static int[] dy = { 0, 1, 0, -1 };
+
+	static enum Dir {
+		left, up, right, down
+	};
+
+	public static void main(String[] args) throws Exception {
+		System.setIn(new FileInputStream(MyUtils.getAbsolutePath("/Project/src/again2/_013robot2/input.txt", "mac")));
+		Scanner s = new Scanner(System.in);
+
+		T = s.nextInt();
+		for (int tc = 1; tc <= T; tc++) {
+			desI = s.nextInt();
+			desJ = s.nextInt();
+			length = s.nextInt();
+
+			// input
+			robotA = s.next();
+			robotB = s.next();
+
+			// solve
+			tiA = 0;
+			tjA = 0;
+
+			tiB = 0;
+			tjB = 0;
+
+			isADone = false;
+			isBDone = false;
+			
+			// robotA
+			for (int i = 0; i < robotA.length(); i++) {
+				if (tiA == desI && tjA == desJ) {
+					isADone=true;
+					break;
+				}
+
+				if (robotA.charAt(i) == 'L') {
+					dirA = turnLeft(dirA);
+					tiA += dx[dirA];
+					tjA += dy[dirA];
+				} else if (robotA.charAt(i) == 'R') {
+					dirA = turnRight(dirA);
+					tiA += dx[dirA];
+					tjA += dy[dirA];
+				} else if (robotA.charAt(i) == 'B') {
+					dirA = turnBack(dirA);
+					tiA += dx[dirA];
+					tjA += dy[dirA];
+				} else if (robotA.charAt(i) == 'W') {
+					dirA = Dir.left.ordinal();
+					tjA--;
+				} else if (robotA.charAt(i) == 'E') {
+					dirA = Dir.right.ordinal();
+					tjA++;
+				} else if (robotA.charAt(i) == 'N') {
+					dirA = Dir.up.ordinal();
+					tiA--;
+				} else if (robotA.charAt(i) == 'S') {
+					dirA = Dir.down.ordinal();
+					tiA++;
+				}
+			}
+			
+
+			// robotB
+			for (int i = 0; i < robotB.length(); i++) {
+				if (tiB == desI && tjB == desJ) {
+					isADone=true;
+					break;
+				}
+
+				if (robotB.charAt(i) == 'L') {
+					dirB = turnLeft(dirB);
+					tiB += dx[dirB];
+					tjB += dy[dirB];
+				} else if (robotB.charAt(i) == 'R') {
+					dirB = turnRight(dirB);
+					tiB += dx[dirB];
+					tjB += dy[dirB];
+				} else if (robotB.charAt(i) == 'B') {
+					dirB = turnBack(dirB);
+					tiB += dx[dirB];
+					tjB += dy[dirB];
+				} else if (robotB.charAt(i) == 'W') {
+					dirB = Dir.left.ordinal();
+					tjB--;
+				} else if (robotB.charAt(i) == 'E') {
+					dirB = Dir.right.ordinal();
+					tjB++;
+				} else if (robotB.charAt(i) == 'N') {
+					dirB = Dir.up.ordinal();
+					tiB--;
+				} else if (robotB.charAt(i) == 'S') {
+					dirB = Dir.down.ordinal();
+					tiB++;
+				}
+			}
+		}
+	}
+
+	private static int turnBack(int oldDir) {
+		return (oldDir + 2) % 4;
+	}
+
+	private static int turnRight(int oldDir) {
+		return (oldDir + 1) % 4;
+	}
+
+	private static int turnLeft(int oldDir) {
+		return (oldDir + 3) % 4;
+	}
+
+}

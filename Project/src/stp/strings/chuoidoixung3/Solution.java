@@ -17,7 +17,8 @@ public class Solution {
 
 	public static void main(String[] args) {
 		try {
-			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("stp\\strings\\chuoidoixung3")));
+			System.setIn(new FileInputStream(MyUtils.getAbsolutePath("Project/src/stp/strings/chuoidoixung3/input.txt", "mac")));
+;
 			Scanner s = new Scanner(System.in);
 
 			T = s.nextInt();

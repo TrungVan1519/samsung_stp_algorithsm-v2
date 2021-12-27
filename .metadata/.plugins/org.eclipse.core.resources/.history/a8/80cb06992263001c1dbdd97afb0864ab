@@ -1,0 +1,16 @@
+package stp.arrays.duyetmang_nangcao_trochoicangua;
+
+import java.io.FileInputStream;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+	static int steps;
+	static int[] dong, tay, nam, bac;
+
+	public static void main(String[] args) {
+		System.setIn(new FileInputStream(MyUtils.getAbsolutePath(null, "mac")));
+	}
+}

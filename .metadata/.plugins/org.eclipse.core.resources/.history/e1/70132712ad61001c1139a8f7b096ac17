@@ -1,0 +1,14 @@
+package stp.arrays.duyetmang_prob24;
+
+import java.io.FileInputStream;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		System.setIn(new FileInputStream(MyUtils.getAbsolutePath("")));
+
+	}
+
+}

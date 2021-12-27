@@ -1,0 +1,110 @@
+package again2._010quanmaduochon;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Main {
+
+	static int T;
+
+	static int size, K, M, D;
+	static char[][] arr;
+	static int[] Ks, Ms, Ds;
+
+	static int tmpCnt, rsCnt, rsI, rsJ;
+
+	// -1-2 -2-1 -21 -12 12 21 2-1 1-2
+	static int[] dx = { -1, -2, -2, -1, 1, 2, 2, 1 };
+	static int[] dy = { -2, -1, 1, 2, 2, 1, -1, -2 };
+
+	public static void main(String[] args) throws Exception {
+		System.setIn(
+				new FileInputStream(MyUtils.getAbsolutePath("/Project/src/again2/_010quanmaduochon/input.txt", "mac")));
+		Scanner s = new Scanner(System.in);
+
+		T = s.nextInt();
+		for (int tc = 1; tc <= T; tc++) {
+			size = s.nextInt();
+			K = s.nextInt();
+			M = s.nextInt();
+			D = s.nextInt();
+
+			arr = new char[size][size];
+			Ks = new int[2 * K];
+			Ms = new int[2 * M];
+			Ds = new int[2 * D];
+
+			// input
+			for (int i = 0; i < Ks.length; i++) {
+				Ks[i] = s.nextInt();
+			}
+
+			for (int i = 0; i < Ms.length; i++) {
+				Ms[i] = s.nextInt();
+			}
+
+			for (int i = 0; i < Ds.length; i++) {
+				Ds[i] = s.nextInt();
+			}
+
+			// fill arr
+			for (int i = 0; i < Ks.length; i++) {
+				if (i % 2 == 0) {
+					arr[Ks[i]][Ks[i + 1]] = 'K';
+				}
+			}
+
+			for (int i = 0; i < Ms.length; i++) {
+				if (i % 2 == 0) {
+					arr[Ms[i]][Ms[i + 1]] = 'D';
+				}
+			}
+
+			for (int i = 0; i < Ds.length; i++) {
+				if (i % 2 == 0) {
+					arr[Ds[i]][Ds[i + 1]] = 'D';
+				}
+			}
+
+			// solve
+			rsCnt = 0;
+			for (int i = 0; i < Ks.length; i++) {
+				if (i % 2 == 0) {
+					tmpCnt = count(Ks[i], Ks[i + 1]);
+					if (rsCnt < tmpCnt) {
+						rsCnt = tmpCnt;
+						rsI = Ks[i];
+						rsJ = Ks[i + 1];
+					}
+				}
+			}
+
+			System.out.printf("#%d %d %d %d\n", tc, rsI, rsJ, rsCnt);
+		}
+	}
+
+	private static int count(int i, int j) {
+		int cnt = 0;
+		int ti, tj;
+
+		for (int k = 0; k < dx.length; k++) {
+			ti = i + dx[k];
+			tj = j + dy[k];
+			System.out.println(size);
+			System.out.println(ti);
+			System.out.println(tj);
+
+			if (ti < 0 || ti >= size || tj < 0 || tj >= size) {
+				continue;
+			}
+
+			if (arr[ti][tj] == 'K' || arr[ti][tj] == 'M') {
+				cnt++;
+			}
+		}
+
+		return cnt;
+	}
+}

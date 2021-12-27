@@ -1,0 +1,15 @@
+package again2._013robot2;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class test {
+	public static void main(String[] args) throws Excepstion {
+		System.setIn(new FileInputStream(MyUtils.getAbsolutePath("/Project/src/again2/_013robot2/test.txt", "mac")));
+		Scanner s = new Scanner(System.in);
+		int[][]arr=new int[4][4];
+		
+	}
+}

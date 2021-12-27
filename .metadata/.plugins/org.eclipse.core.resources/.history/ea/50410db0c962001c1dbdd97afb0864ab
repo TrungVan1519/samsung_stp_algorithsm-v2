@@ -1,0 +1,66 @@
+package stp.strings.chuoidoixung2;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class NewSolution {
+
+	static int T;
+
+	static char[] arr;
+
+	static int resLen;
+	static String resStr;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(
+					MyUtils.getAbsolutePath("Project/src/stp/strings/chuoidoixung2/input.txt", "mac")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				// input
+				String str = s.next();
+				arr = new char[str.length()];
+
+				for (int i = 0; i < arr.length; i++) {
+					arr[i] = str.charAt(i);
+				}
+
+				// solve
+				resLen = -1;
+				for (int i = 0; i < arr.length; i++) {
+					for (int j = arr.length - 1; j > i; j--) {
+						if (arr[i] == arr[j]) {
+							int len = j + 1 - i;
+							if (isSymmetric(i, j) && resLen < len) {
+								resStr = "";
+								resLen = len;
+								for (int k = i; k < len; k++) {
+									resStr += arr[k];
+								}
+							}
+						}
+					}
+				}
+
+				System.out.println("#" + tc + " " + resLen + " " + resStr);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static boolean isSymmetric(int i, int j) {
+		int len = j + 1 - i;
+		for (int k = 0; k < len / 2; k++) {
+			if (arr[i + k] != arr[j - k]) {
+				return false;
+			}
+		}
+		return true;
+	}
+}

@@ -1,0 +1,40 @@
+package again2._012robot1;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Main {
+
+	static int T;
+
+	static int size;
+	static int[][] pos;
+
+	static int[] dx = { -1, 0, 1, 0 };
+	static int[] dy = { 0, -1, 0, 1 };
+
+	public static void main(String[] args) throws Exception {
+		System.setIn(new FileInputStream(MyUtils.getAbsolutePath("/Project/src/again2/_012robot1/input.txt", "mac")));
+		Scanner s = new Scanner(System.in);
+
+		T = s.nextInt();
+		for (int tc = 1; tc <= T; tc++) {
+			size = s.nextInt();
+			pos = new int[size][2];
+			
+			//input
+			for (int i = 0; i < size; i++) {
+				pos[i][0]=s.nextInt();
+				pos[i][1]=s.nextInt();
+			}
+			
+			MyUtils.showArr(pos, size, 2);
+			
+			//solve
+			
+		}
+
+	}
+}

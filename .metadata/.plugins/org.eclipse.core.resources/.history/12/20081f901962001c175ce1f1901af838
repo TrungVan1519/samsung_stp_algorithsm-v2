@@ -1,0 +1,49 @@
+package stp.arrays.duyetmang_huanluyentanbinh;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+
+	static int size;
+	static int[] points, fires;
+	
+	static int resSumPoint;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(
+					MyUtils.getAbsolutePath("Project/src/stp/arrays/duyetmang_huanluyentanbinh/input.txt", "mac")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				size = s.nextInt();
+				points = new int[size];
+				fires = new int[size];
+
+				// input
+				for (int i = 0; i < size; i++) {
+					points[i] = s.nextInt();
+				}
+
+				for (int i = 0; i < size; i++) {
+					fires[i] = s.nextInt();
+				}
+				
+				// solve
+				resSumPoint=0;
+				for (int i = 0; i < size; i++) {
+					
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

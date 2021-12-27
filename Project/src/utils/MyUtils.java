@@ -2,7 +2,11 @@ package utils;
 
 public class MyUtils {
 
-	public static String getAbsolutePath(String packageName) {
+	public static String getAbsolutePath(String packageName, String... os) {
+		if (os.length > 0 && os[0].compareTo("mac") == 0) {
+			return "/Users/trungvan/Dev/Java/Samsung STP/samsung_stp_algorithsm-v.2.0.0/" + packageName;
+		}
+
 		return "C:\\Users\\Admin\\Desktop\\STP\\Project\\src\\" + packageName + "\\input.txt";
 	}
 

@@ -1,0 +1,44 @@
+package again2._001hotelfloors;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Main {
+
+	static int T;
+
+	static int row, col;
+	static char[][] arr;
+
+	static int mRes;
+
+	public static void main(String[] args) throws Exception {
+		System.setIn(new FileInputStream(MyUtils.getAbsolutePath("", "mac")));
+		Scanner s = new Scanner(System.in);
+
+		T = s.nextInt();
+		for (int i = 0; i < T; i++) {
+			input(s);
+			solve();
+		}
+	}	
+
+	private static void input(Scanner s) {
+		row = s.nextInt();
+		col = s.nextInt();
+		arr = new char[row][col];
+		
+		for (int i = 0; i < row; i++) {
+			String str=s.next();
+			for (int j = 0; j < col; j++) {
+				arr[i][j]=str.charAt(j);
+			}
+		}
+	}
+
+	private static void solve() {
+		
+	}
+}

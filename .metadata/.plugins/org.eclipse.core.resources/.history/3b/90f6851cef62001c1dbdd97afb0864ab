@@ -1,0 +1,79 @@
+package stp.strings.mirrorstrings;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class NewSolution {
+
+	static int T;
+
+	static String str;
+
+	static int resLen, resCount;
+	static String resStr;
+
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream(
+					MyUtils.getAbsolutePath("Project/src/stp/strings/mirrorstrings/input.txt", "mac")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				// input
+				str = s.next();
+
+				// solve
+				resLen = -1;
+				resCount = 0;
+				resStr = "";
+				for (int i = 0; i < str.length(); i++) {
+					for (int j = str.length() - 1; j >= i; j--) {
+						if (str.charAt(i) == str.charAt(j)) {
+							int len = j + 1 - i;
+							if (isSymmetric(i, j) && resLen < len) {
+								resLen = len;
+								resStr = str.substring(i, j + 1);
+							}
+						}
+					}
+				}
+
+				if (resLen == 1) {
+					resCount = str.length();
+				} else {
+					System.out.println(resLen);
+					for (int i = 0; i <= str.length() - resStr.length(); i++) {
+						int j = 0;
+						for (j = 0; j < resStr.length(); j++) {
+							if (str.charAt(i + j) != resStr.charAt(j)) {
+								break;
+							}
+						}
+
+						if (j == resStr.length() - 1) {
+							resCount++;
+							j = 0;
+						}
+					}
+				}
+
+				System.out.println(resLen + " " + resCount);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static boolean isSymmetric(int start, int finish) {
+		int len = finish + 1 - start;
+		for (int i = 0; i < len / 2; i++) {
+			if (str.charAt(start + i) != str.charAt(finish - i)) {
+				return false;
+			}
+		}
+		return true;
+	}
+}

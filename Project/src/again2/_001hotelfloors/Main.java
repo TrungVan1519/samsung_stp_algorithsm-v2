@@ -1,0 +1,76 @@
+package again2._001hotelfloors;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Main {
+
+	static int T;
+
+	static int row, col;
+	static char[][] arr;
+
+	static float rsPeople, rsRooms;
+
+	static int[] dx = { -1, 0, 1, 0 };
+	static int[] dy = { 0, -1, 0, 1 };
+
+	public static void main(String[] args) throws Exception {
+		System.setIn(
+				new FileInputStream(MyUtils.getAbsolutePath("/Project/src/again2/_001hotelfloors/input.txt", "mac")));
+		Scanner s = new Scanner(System.in);
+
+		T = s.nextInt();
+		for (int tc = 0; tc < T; tc++) {
+			row = s.nextInt();
+			col = s.nextInt();
+			arr = new char[row][col];
+
+			// input
+			rsPeople = 0;
+			for (int i = 0; i < row; i++) {
+				String str = s.next();
+				for (int j = 0; j < col; j++) {
+					arr[i][j] = str.charAt(j);
+					if (arr[i][j] == '*') {
+						rsPeople++;
+					}
+				}
+			}
+
+			// solve
+			rsRooms = 0;
+			for (int i = 1; i < row; i++) {
+				for (int j = 1; j < col; j++) {
+					if (arr[i][j] != '#') {
+						rsRooms++;
+						fillRoom(i, j);
+					}
+				}
+			}
+
+//			System.out.println(String.format("%.2f", cntPeople / cntRooms));
+			System.out.printf("%.2f\n", rsPeople / rsRooms);
+		}
+	}
+
+	private static void fillRoom(int i, int j) {
+		int ti, tj;
+
+		for (int k = 0; k < dx.length; k++) {
+			ti = i + dx[k];
+			tj = j + dy[k];
+
+			if (ti < 0 || ti >= row || tj < 0 || tj >= col) {
+				continue;
+			}
+			
+			if (arr[ti][tj] != '#') {
+				arr[ti][tj] = '#';
+				fillRoom(ti, tj);
+			}
+		}
+	}
+}

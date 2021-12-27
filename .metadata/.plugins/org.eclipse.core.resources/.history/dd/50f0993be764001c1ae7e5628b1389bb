@@ -1,0 +1,83 @@
+package again2._007daovangeemix;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Main {
+
+	static int T;
+
+	static int row, col;
+	static char[][] arr;
+
+	static int goldRow, goldCol;
+	static int resSum;
+
+	public static void main(String[] args) {
+		try {
+
+			System.setIn(new FileInputStream(
+					MyUtils.getAbsolutePath("/Project/src/again2/_007daovangeemix/input.txt", "mac")));
+			Scanner s = new Scanner(System.in);
+
+			T = s.nextInt();
+			for (int tc = 1; tc <= T; tc++) {
+				row = s.nextInt();
+				col = s.nextInt();
+				arr = new char[row][col];
+
+				// input
+				for (int i = 0; i < row; i++) {
+					String str = s.next();
+					for (int j = 0; j < col; j++) {
+						arr[i][j] = str.charAt(j);
+					}
+				}
+
+				// solve
+				goldRow = 0;
+				goldCol = 0;
+				for (int i = 0; i < row; i++) {
+					for (int j = 0; j < col; j++) {
+						if (arr[i][j] == '0') {
+							if (checkRow(i)) {
+								goldRow++;
+							}
+
+							if (checkCol(j)) {
+								goldCol++;
+							}
+						}
+					}
+				}
+
+				int cntRows = goldRow / col;
+				int cntCols = goldCol / row;
+				resSum = goldRow + goldCol - cntRows * cntCols;
+				System.out.printf("#%d %d", tc, resSum);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static boolean checkRow(int i) {
+		for (int j = 0; j < col; j++) {
+			if (arr[i][j] != '0') {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static boolean checkCol(int j) {
+		for (int i = 0; i < row; i++) {
+			if (arr[i][j] != '0') {
+				return false;
+			}
+		}
+		return true;
+	}
+}

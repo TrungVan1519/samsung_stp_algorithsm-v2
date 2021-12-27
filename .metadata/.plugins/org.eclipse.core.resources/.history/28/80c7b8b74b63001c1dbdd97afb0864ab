@@ -1,0 +1,50 @@
+package stp.arrays.duyetmang_nangcao_trochoicangua;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import utils.MyUtils;
+
+public class Solution {
+
+	static int T;
+	static int steps;
+	static int[] dong, tay, nam, bac;
+
+	public static void main(String[] args) throws Exception {
+		System.setIn(new FileInputStream(
+				MyUtils.getAbsolutePath("Project/src/stp/arrays/duyetmang_nangcao_trochoicangua/input.txt", "mac")));
+		Scanner s = new Scanner(System.in);
+
+		T = s.nextInt();
+		for (int i = 0; i < T; i++) {
+			input(s);
+			solve();
+		}
+	}
+
+	private static void input(Scanner s) {
+		steps = s.nextInt();
+		dong = new int[steps];
+		tay = new int[steps];
+		nam = new int[steps];
+		bac = new int[steps];
+
+		inputArr(dong, s);
+		inputArr(tay,s);
+		inputArr(nam, s);
+		inputArr(bac,s);
+	}
+
+	private static void inputArr(int[] a, Scanner s) {
+		for (int i = 0; i < steps; i++) {
+			a[i] = s.nextInt();
+		}
+	}
+
+	private static void solve() {
+		// TODO Auto-generated method stub
+
+	}
+}
